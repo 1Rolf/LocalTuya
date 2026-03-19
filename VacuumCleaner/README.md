@@ -2,7 +2,7 @@
 
 [![Version](https://img.shields.io/badge/Symcon-PHP--Modul-red.svg?style=flat-square)](https://www.symcon.de/service/dokumentation/entwicklerbereich/sdk-tools/sdk-php/)
 [![Product](https://img.shields.io/badge/Symcon%20Version-8.1-blue.svg?style=flat-square)](https://www.symcon.de/produkt/)
-[![Version](https://img.shields.io/badge/Modul%20Version-2.1.20250926-orange.svg?style=flat-square)](https://github.com/Wilkware/LocalTuya)
+[![Version](https://img.shields.io/badge/Modul%20Version-2.2.20260319-orange.svg?style=flat-square)](https://github.com/Wilkware/LocalTuya)
 [![License](https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-green.svg?style=flat-square)](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 [![Actions](https://img.shields.io/github/actions/workflow/status/wilkware/LocalTuya/ci.yml?branch=main&label=CI&style=flat-square)](https://github.com/Wilkware/LocalTuya/actions)
 
@@ -108,10 +108,14 @@ Das Modul stellt keine direkten Funktionsaufrufe zur Verfügung.
 
 ### 8. Versionshistorie
 
+v2.2.20260319
+
+* _FIX_: Kompatibilität für IPS größer 8.2 hergestellt
+
 v2.1.20250926
 
-* _FIX_: Abruf aller Daten korriegiert (get-states)
-* _FIX_: Fehler bei Verarbeitung des Payloads durch Umstellung auf IPSModuleStrict korriegiert
+* _FIX_: Abruf aller Daten korrigiert (get-states)
+* _FIX_: Fehler bei Verarbeitung des Payloads durch Umstellung auf IPSModuleStrict korrigiert
 
 v2.0.20250916
 
@@ -125,7 +129,7 @@ v1.1.20250802
 * _NEU_: Konfigurationsformular überarbeitet
 * _NEU_: Continuous Integration mit Check Style, Static Code Analysis und Unit Tests eingeführt
 * _NEU_: Debugging Funktionen komplett überarbeitet
-* _FIX_: Mqtt Topic test korriegiert
+* _FIX_: Mqtt Topic test korrigiert
 * _FIX_: Dokumentation für PHP Static Analysis komplett überarbeitet
 * _FIX_: Bibliotheksfunktionen überarbeitet in Vorbereitung auf IPSModuleStrict
 

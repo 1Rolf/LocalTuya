@@ -65,7 +65,9 @@ class CeilingFan extends IPSModuleStrict
         $this->RegisterProfileInteger('T2MCF.Countdown', 'timer', '', ' min', 0, 540, 1);
 
         // Automatically connect to the MQTT server/splitter instance
-        $this->ConnectParent(self::GUID_MQTT_IO);
+        if ((float) IPS_GetKernelVersion() < 8.2) {
+            $this->ConnectParent(self::GUID_MQTT_IO);
+        }
     }
 
     /**
