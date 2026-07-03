@@ -1,0 +1,19 @@
+{
+    "id": "{A7F3C9E1-5B24-4D80-9E6F-1C8A2B3D4E50}",
+    "name": "Air Conditioner",
+    "url": "https://wilkware.de/ip-symcon-module/localtuya/",
+    "type": 3,
+    "vendor": "",
+    "aliases": [
+        "Tuya Air Conditioner",
+        "Tuya Klimaanlage"
+    ],
+    "parentRequirements": [
+        "{043EA491-0325-4ADD-8FC2-A30C8EEB4D3F}"
+    ],
+    "childRequirements": [],
+    "implemented": [
+        "{7F7632D9-FA40-4F38-8DEA-C83CD4325A32}"
+    ],
+    "prefix": "T2MAC"
+}

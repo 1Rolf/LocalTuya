@@ -1,0 +1,33 @@
+{
+    "translations": {
+        "de": {
+            "Air Conditioner": "Klimaanlage",
+            "Tuya Air Conditioner": "Tuya Klimaanlage",
+            "Tuya Klimaanlage": "Tuya Klimaanlage",
+            "Tuya device (Air Conditioner)": "Tuya Gerät (Klimaanlage)",
+            "Controls a compatible Tuya air conditioner locally via tuya2mqtt (raw DPS as JSON on .../dps/state).": "Steuert eine kompatible Tuya-Klimaanlage lokal über tuya2mqtt (rohe DPS als JSON auf .../dps/state).",
+            "📳 Device information ...": "📳 Geräteinformationen ...",
+            "Status": "Status",
+            "Power": "Ein/Aus",
+            "Mode": "Modus",
+            "Setpoint (°C)": "Solltemperatur (°C)",
+            "Setpoint (°F)": "Solltemperatur (°F)",
+            "Fan speed": "Lüfterstufe",
+            "Swing": "Luftklappe",
+            "Sleep": "Schlafmodus",
+            "Fahrenheit": "Fahrenheit",
+            "Auto": "Auto",
+            "Heat": "Heizen",
+            "Dry": "Entfeuchten",
+            "Cool": "Kühlen",
+            "Fan": "Lüften",
+            "Low": "Niedrig",
+            "Medium": "Mittel",
+            "High": "Hoch",
+            "Update": "Aktualisieren",
+            "MQTT settings incorrect": "MQTT Einstellungen fehlerhaft",
+            "🎗️ Source code, donation and licence ...": "🎗️ Quellcode, Spende und Lizenz ...",
+            "Based on the LocalTuya library by Heiko Wilknitz (@pitti, https://wilkware.de). Licensed under CC BY-NC-SA 4.0.": "Basiert auf der LocalTuya-Bibliothek von Heiko Wilknitz (@pitti, https://wilkware.de). Lizenziert unter CC BY-NC-SA 4.0."
+        }
+    }
+}

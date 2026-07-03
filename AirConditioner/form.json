@@ -1,0 +1,71 @@
+{
+    "elements": [
+        {
+            "type": "RowLayout",
+            "items": [
+                {
+                    "type": "ColumnLayout",
+                    "items": [
+                        {
+                            "type": "Label",
+                            "label": "Tuya device (Air Conditioner)",
+                            "bold": true
+                        },
+                        {
+                            "type": "Label",
+                            "label": "Controls a compatible Tuya air conditioner locally via tuya2mqtt (raw DPS as JSON on .../dps/state)."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "ExpansionPanel",
+            "caption": "📳 Device information ...",
+            "expanded": true,
+            "items": [
+                {
+                    "type": "ValidationTextBox",
+                    "name": "MQTTBaseTopic",
+                    "caption": "MQTT Base Topic"
+                },
+                {
+                    "type": "ValidationTextBox",
+                    "name": "MQTTTopic",
+                    "caption": "MQTT Topic"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "RowLayout",
+            "items": [
+                {
+                    "type": "Button",
+                    "name": "Update",
+                    "caption": "Update",
+                    "onClick": "IPS_RequestAction($id,'get-states', true);"
+                }
+            ]
+        },
+        {
+            "type": "ExpansionPanel",
+            "caption": "🎗️ Source code, donation and licence ...",
+            "items": [
+                {
+                    "type": "Label",
+                    "caption": "Based on the LocalTuya library by Heiko Wilknitz (@pitti, https://wilkware.de). Licensed under CC BY-NC-SA 4.0.",
+                    "bold": true
+                }
+            ]
+        }
+    ],
+    "status": [
+        {
+            "code": 201,
+            "icon": "inactive",
+            "caption": "MQTT settings incorrect"
+        }
+    ]
+}
