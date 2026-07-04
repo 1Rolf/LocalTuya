@@ -35,6 +35,26 @@
                     "caption": "MQTT Topic"
                 }
             ]
+        },
+        {
+            "type": "ExpansionPanel",
+            "caption": "🔄 Periodic refresh ...",
+            "expanded": true,
+            "items": [
+                {
+                    "type": "CheckBox",
+                    "name": "PollActive",
+                    "caption": "Enable periodic refresh (get-states)"
+                },
+                {
+                    "type": "NumberSpinner",
+                    "name": "PollInterval",
+                    "caption": "Interval",
+                    "suffix": "s",
+                    "minimum": 5,
+                    "maximum": 600
+                }
+            ]
         }
     ],
     "actions": [
