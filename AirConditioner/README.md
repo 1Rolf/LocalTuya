@@ -46,6 +46,17 @@ Schaltet die AC ab → passt. Falls nicht, erwartet dein tuya2mqtt Einzel-Topics
 In diesem Fall in `module.php` die Methode `SendDps()` auf die dort auskommentierte
 Alternative umstellen.
 
+## Zyklische Aktualisierung (optional)
+Tuya-Geräte senden DPs nur bei Änderung – kein periodischer Vollstatus. Fällt ein
+Delta aus (Verbindungsabbruch, verworfener MQTT-Publish), bleibt eine Variable stehen.
+Dagegen gibt es im Konfigformular unter **Periodic refresh**:
+- **Enable periodic refresh (get-states)** – Ein/Aus
+- **Interval** – 5 bis 600 Sekunden
+
+Ist es aktiv, sendet das Modul im gewählten Takt `get-states` an `.../command` und liest
+so alle aktuellen Werte neu ein (Re-Sync). Standard: aus, 30 s. Konservativer Richtwert
+30–60 s; sehr kurze Intervalle erzeugen unnötig Last.
+
 ## Lizenz / Attribution
 Abgeleitet von der LocalTuya-Bibliothek von Heiko Wilknitz (@pitti, https://wilkware.de).
 Lizenziert unter **CC BY-NC-SA 4.0**.
