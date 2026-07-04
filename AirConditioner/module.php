@@ -59,6 +59,11 @@ class AirConditioner extends IPSModuleStrict
         // Properties
         $this->RegisterPropertyString('MQTTBaseTopic', 'tuya2mqtt');
         $this->RegisterPropertyString('MQTTTopic', '');
+        $this->RegisterPropertyBoolean('PollActive', false);
+        $this->RegisterPropertyInteger('PollInterval', 30);
+
+        // Timer fuer die zyklische Aktualisierung (get-states)
+        $this->RegisterTimer('Poll', 0, "T2MAC_Poll(\$_IPS['TARGET']);");
 
         // Profile
         $this->RegisterProfileString('T2M.Status', 'cloud-question', '', '', self::PROFIL_STATUS);
@@ -98,6 +103,7 @@ class AirConditioner extends IPSModuleStrict
 
         // Setup pruefen
         if (empty($base) || empty($topic)) {
+            $this->SetTimerInterval('Poll', 0);
             $this->SetStatus(201);
             return;
         } else {
@@ -131,6 +137,17 @@ class AirConditioner extends IPSModuleStrict
         $this->MaintainAction('sleep', true);
         $this->MaintainAction('fahrenheit', true);
         $this->MaintainAction('setpoint_f', true);
+
+        // Zyklische Aktualisierung (Timer) konfigurieren
+        $active = $this->ReadPropertyBoolean('PollActive');
+        $interval = $this->ReadPropertyInteger('PollInterval');
+        if ($interval < 5) {
+            $interval = 5;
+        }
+        if ($interval > 600) {
+            $interval = 600;
+        }
+        $this->SetTimerInterval('Poll', $active ? $interval * 1000 : 0);
 
         // Beim ersten Mal initialisieren
         if (!$es) {
@@ -184,6 +201,14 @@ class AirConditioner extends IPSModuleStrict
         }
         // Optimistisch sofort setzen; der Echo auf .../dps/state korrigiert bei Bedarf.
         $this->SetValue($ident, $value);
+    }
+
+    /**
+     * Timer-Callback: erzwingt eine frische Vollausgabe aller Werte (Re-Sync).
+     */
+    public function Poll(): void
+    {
+        $this->SendMQTT('command', 'get-states');
     }
 
     /**
