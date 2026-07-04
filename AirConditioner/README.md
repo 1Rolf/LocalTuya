@@ -26,25 +26,13 @@ Kommandos gehen als Tuya-JSON an `.../dps/command`: `{"dps":<n>,"set":<wert>}`.
 
 DPS 4/13/14/15/19 sind derzeit nicht zugeordnet (unbekannt).
 
-## Installation
-1. Diesen Ordner `AirConditioner` in dein LocalTuya-Repo legen (neben `CeilingFan`,
-   `VacuumCleaner` und `libs`), committen/pushen.
-2. In IP-Symcon die Bibliothek über das Modul-Control aktualisieren.
-3. Instanz hinzufügen → Hersteller „(Geräte)" → **Air Conditioner** (Alias: Tuya Klimaanlage).
+## Einrichtung in IP-Symcon
+1. Bibliothek im **Modul-Control** aktualisieren, damit das Modul „Air Conditioner" erkannt wird.
+2. **Instanz hinzufügen** → nach „Air Conditioner" suchen und auswählen (Alias: Tuya Klimaanlage).
+3. Als **Parent** den **MQTT-Server** wählen – deinen Symcon-MQTT-Broker, auf den tuya2mqtt publiziert.
 4. **MQTT Base Topic** = `tuya2mqtt`, **MQTT Topic** = `portable_air_conditioner`.
-5. Als Parent den vorhandenen MQTT-Client/-Server wählen. „Aktualisieren" klicken.
-
-## Kommando-Topic verifizieren (wichtig!)
-Getestet werden konnte der Schreibpfad nicht. Prüfe ihn einmal manuell:
-
-    mosquitto_pub -h <SYMCON_IP> -t 'tuya2mqtt/portable_air_conditioner/dps/command' -m '{"dps":1,"set":false}'
-
-Schaltet die AC ab → passt. Falls nicht, erwartet dein tuya2mqtt Einzel-Topics:
-
-    mosquitto_pub -h <SYMCON_IP> -t 'tuya2mqtt/portable_air_conditioner/dps/1/command' -m 'false'
-
-In diesem Fall in `module.php` die Methode `SendDps()` auf die dort auskommentierte
-Alternative umstellen.
+5. Optional **Periodic refresh** aktivieren und Intervall (5–600 s) setzen.
+6. **Übernehmen**. Mit „Aktualisieren" werden einmalig alle aktuellen Werte geholt.
 
 ## Zyklische Aktualisierung (optional)
 Tuya-Geräte senden DPs nur bei Änderung – kein periodischer Vollstatus. Fällt ein
