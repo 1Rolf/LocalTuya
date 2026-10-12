@@ -30,7 +30,10 @@
             "Update": "Aktualisieren",
             "MQTT settings incorrect": "MQTT Einstellungen fehlerhaft",
             "🎗️ Source code, donation and licence ...": "🎗️ Quellcode, Spende und Lizenz ...",
-            "Based on the LocalTuya library by Heiko Wilknitz (@pitti, https://wilkware.de). Licensed under CC BY-NC-SA 4.0.": "Basiert auf der LocalTuya-Bibliothek von Heiko Wilknitz (@pitti, https://wilkware.de). Lizenziert unter CC BY-NC-SA 4.0."
+            "Based on the LocalTuya library by Heiko Wilknitz (@pitti, https://wilkware.de). Licensed under CC BY-NC-SA 4.0.": "Basiert auf der LocalTuya-Bibliothek von Heiko Wilknitz (@pitti, https://wilkware.de). Lizenziert unter CC BY-NC-SA 4.0.",
+            "Error": "Fehler",
+            "OK": "OK",
+            "Water tank full": "Wassertank voll"
         }
     }
 }
