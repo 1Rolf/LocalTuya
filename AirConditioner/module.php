@@ -48,6 +48,13 @@ class AirConditioner extends IPSModuleStrict
         [3, 'High', 'signal-bars-good', -1],
     ];
 
+    // Profil "T2MAC.Error" (DPS 15 - Fehler-Bitmap, 0 = kein Fehler)
+    // Bisher bestaetigt: 4 = Wassertank voll. Weitere Werte werden als Zahl angezeigt.
+    private const PROFIL_ERROR = [
+        [0, 'OK', 'circle-check', 0x00FF00],
+        [4, 'Water tank full', 'droplet', 0xFF0000],
+    ];
+
     /**
      * Wird einmalig beim Erstellen der Instanz und beim Start von IP-Symcon aufgerufen.
      */
@@ -71,6 +78,7 @@ class AirConditioner extends IPSModuleStrict
         $this->RegisterProfileInteger('T2MAC.FanSpeed', 'fan', '', '', 0, 3, 1, self::PROFIL_FAN);
         $this->RegisterProfileInteger('T2MAC.TempC', 'temperature-half', '', ' °C', 16, 31, 1);
         $this->RegisterProfileInteger('T2MAC.TempF', 'temperature-half', '', ' °F', 61, 88, 1);
+        $this->RegisterProfileInteger('T2MAC.Error', 'triangle-exclamation', '', '', 0, 255, 1, self::PROFIL_ERROR);
 
         // Automatisch mit dem MQTT-Server/-Splitter verbinden
         if ((float) IPS_GetKernelVersion() < 8.2) {
@@ -126,6 +134,7 @@ class AirConditioner extends IPSModuleStrict
         $this->MaintainVariable('sleep', $this->Translate('Sleep'), 0, '~Switch', $pos++, true);
         $this->MaintainVariable('fahrenheit', $this->Translate('Fahrenheit'), 0, '~Switch', $pos++, true);
         $this->MaintainVariable('setpoint_f', $this->Translate('Setpoint (°F)'), 1, 'T2MAC.TempF', $pos++, true);
+        $this->MaintainVariable('error', $this->Translate('Error'), 1, 'T2MAC.Error', $pos++, true);
         $this->MaintainVariable('status', $this->Translate('Status'), 3, 'T2M.Status', $pos++, true);
 
         // Aktionen (bedienbare Variablen)
@@ -256,6 +265,9 @@ class AirConditioner extends IPSModuleStrict
             }
             if (array_key_exists('18', $dps)) {
                 $this->SetValueInteger('setpoint_f', (int) $dps['18']);
+            }
+            if (array_key_exists('15', $dps)) {
+                $this->SetValueInteger('error', (int) $dps['15']);
             }
         }
         return '';
