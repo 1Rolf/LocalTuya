@@ -23,8 +23,9 @@ Kommandos gehen als Tuya-JSON an `.../dps/command`: `{"dps":<n>,"set":<wert>}`.
 | 16  | Luftklappe (Swing)  | Boolean | true/false                                       |
 | 17  | Schlafmodus         | Boolean | true/false                                       |
 | 18  | Solltemperatur °F   | Integer | °F (nur wenn DPS 10 an)                          |
+| 15  | Fehler (nur lesen)  | Integer | Bitmap: 0 = OK, 4 = Wassertank voll              |
 
-DPS 4/13/14/15/19 sind derzeit nicht zugeordnet (unbekannt).
+DPS 4/13/14/19 sind derzeit nicht zugeordnet (unbekannt).
 
 ## Einrichtung in IP-Symcon
 1. Bibliothek im **Modul-Control** aktualisieren, damit das Modul „Air Conditioner" erkannt wird.
